@@ -1,0 +1,23 @@
+<% if notice %>
+	<p id="notice"><%= notice %></p>
+<% end %>
+<h1>All pizzas </h1>
+   <% @pizzas.each do |pizza| %>
+		<p>
+		 <b>Size:</b>
+		  <%= pizza.size %>
+		</p>
+
+		<p>
+		  <b>Crust:</b>
+		  <%= pizza.crust %>
+		</p>
+
+		<div class="price_line">
+		  <b>Price:</b>
+		  <%= pizza.price %>
+			<%= button_to 'Add to Order', preferences_path(pizza_id: pizza) %>
+		</div>
+	<% end %>
+
+

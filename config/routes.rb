@@ -1,6 +1,13 @@
 Pp::Application.routes.draw do
+  resources :preferences
+
+  resources :orders
+
+  get "store/index"
+
   resources :pizzas
 
+  root to: 'store#index', as: 'store'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
