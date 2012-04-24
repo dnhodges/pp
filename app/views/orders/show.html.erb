@@ -1,25 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Your Order</h2>
-
-<ul>
-	<% @order.preferences.each do |pref| %>
-		<li><%= pref.quantity %> &times;
-			<%= pref.pizza.size %>
-			<%= pref.pizza.crust %>
-			<%#= pref.pizza.price %>
-			<%= number_to_currency(pref.total_price) %>
-			<%= button_to 'Delete this line', pref, method: :delete, confirm: 'Are you sure?' %>
-		</li>
-	<% end %>
-
-	<br/>
-	<b>Total Cost:</b>
-	<%= number_to_currency(@order.total_price) %>
-</ul>
-
-
-<%= button_to 'Delete entire order', @order, method: :delete, confirm: 'Are you sure?' %>
+<%= render @order %>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

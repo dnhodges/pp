@@ -47,7 +47,7 @@ class PreferencesController < ApplicationController
 
     respond_to do |format|
       if @preference.save
-        format.html { redirect_to @preference.order, notice: 'Preference was successfully created.' }
+        format.html { redirect_to store_url }#@preference.order, notice: 'Preference was successfully created.' }
         format.json { render json: @preference, status: :created, location: @preference }
       else
         format.html { render action: "new" }

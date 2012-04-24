@@ -1,29 +1,30 @@
 <h1>Listing pizzas</h1>
-
 <table>
-  <tr>
-    <th>Quantity</th>
-    <th>Size</th>
-    <th>Crust</th>
-    <th>Price</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @pizzas.each do |pizza| %>
-  <tr>
-    <td><%= pizza.quantity %></td>
-    <td><%= pizza.size %></td>
-    <td><%= pizza.crust %></td>
-    <td><%= pizza.price %></td>
-    <td><%= link_to 'Show', pizza %></td>
-    <td><%= link_to 'Edit', edit_pizza_path(pizza) %></td>
-    <td><%= link_to 'Destroy', pizza, confirm: 'Are you sure?', method: :delete %></td>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+
+    <td class="list_description">
+      <dl>
+        <dt><%= pizza.size %></dt>
+        <dd><%= pizza.crust %></dd>
+        <dt><%= pizza.price %></dt>
+      </dl> 
+    </td>
+
+
+    <td class="list_actions">
+      <%= link_to 'Show', pizza %><br/>
+      <%= link_to 'Edit', edit_pizza_path(pizza) %><br/>
+      <%= link_to 'Destroy', pizza, 
+                confirm: 'Are you sure?',
+                method: :delete %>
+    </td> 
   </tr>
-<% end %>
+<% end %> 
+
 </table>
-
 <br />
-
 <%= link_to 'New Pizza', new_pizza_path %>
+
+

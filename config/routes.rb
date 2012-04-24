@@ -1,11 +1,15 @@
 Pp::Application.routes.draw do
+  resources :purchases
+
   resources :preferences
 
   resources :orders
 
   get "store/index"
 
-  resources :pizzas
+  resources :pizzas do
+    get :who_bought, on: :member
+  end
 
   root to: 'store#index', as: 'store'
   # The priority is based upon order of creation:

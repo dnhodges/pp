@@ -1,22 +1,23 @@
 <% if notice %>
 	<p id="notice"><%= notice %></p>
 <% end %>
-<h1>All pizzas </h1>
+<h1>Your Order Options </h1>
+
+
    <% @pizzas.each do |pizza| %>
-		<p>
-		 <b>Size:</b>
-		  <%= pizza.size %>
-		</p>
+		<div class="entry">
+		
+		  <h3> <b>Size: </b><%= pizza.size %></h3>
 
-		<p>
-		  <b>Crust:</b>
-		  <%= pizza.crust %>
-		</p>
+		  <h3><b>Crust: </b><%= pizza.crust %></h3>
 
-		<div class="price_line">
-		  <b>Price:</b>
-		  <%= pizza.price %>
-			<%= button_to 'Add to Order', preferences_path(pizza_id: pizza) %>
+		  
+			<div class="price_line">
+			  <span class="price">
+			  	<b>Price: </b><%= number_to_currency(pizza.price) %>
+				<%= button_to 'Add to Order', preferences_path(pizza_id: pizza) %>
+			  </span>
+			</div>
 		</div>
 	<% end %>
 

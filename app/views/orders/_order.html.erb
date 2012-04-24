@@ -1,0 +1,15 @@
+<div class="order_title">Your Order</div>
+
+<table>
+	<%= render(order.preferences) %>
+
+
+	<tr class="total_line">
+		<td colspan="3"><br/>Total: </td>
+		<td class="total_cell"><br/><%= number_to_currency(order.total_price) %></td>
+	</tr>
+
+</table>
+
+<%= button_to 'Checkout', new_purchase_path, method: :get %> 
+<%= button_to 'Clear order', order, method: :delete, confirm: 'Are you sure?' %>

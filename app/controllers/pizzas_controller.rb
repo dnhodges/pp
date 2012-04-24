@@ -80,4 +80,11 @@ class PizzasController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def who_bought
+    @pizza = Pizza.find(params[:id])
+    respond_to do |format|
+      format.atom
+    end
+  end
 end

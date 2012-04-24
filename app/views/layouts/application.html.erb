@@ -6,9 +6,29 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
+<body class='<%= controller.controller_name %>'>
+	<div id="banner">
+		<%= @page_title || "CMSC424 Pizza Restaurant" %>
+	</div>
 
+	<div id="columns">
+		<div id="side"> 
+			<div id="order">
+				<%= render @order %>
+			</div>
+			
+			<ul>
+				<%= link_to 'Home', store_path %> |
+				<li><a href="http://www..../faq">Questions</a></li> 
+				<li><a href="http://www..../news">News</a></li> 
+				<li><a href="http://www..../contact">Contact</a></li>
+			</ul> 
+		</div>
+
+		<div id="main"> 
+			<%= yield %>
+	    </div>
+  	</div>
 </body>
 </html>

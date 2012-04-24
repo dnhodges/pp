@@ -1,6 +1,6 @@
 class Pizza < ActiveRecord::Base
 	has_many :preferences
-
+	has_many :purchases, through: :preferences
 	before_destroy :ensure_not_referenced_by_any_preference
 
 
