@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  skip_before_filter :authorize, only: [:create, :update, :destroy]
   # GET /orders
   # GET /orders.json
   def index

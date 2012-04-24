@@ -1,4 +1,5 @@
 class PreferencesController < ApplicationController
+  skip_before_filter :authorize, only: :create
   # GET /preferences
   # GET /preferences.json
   def index

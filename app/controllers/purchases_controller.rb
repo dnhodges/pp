@@ -1,8 +1,11 @@
 class PurchasesController < ApplicationController
+  skip_before_filter :authroize, only: [:new, :create]
   # GET /purchases
   # GET /purchases.json
   def index
     @purchases = Purchase.all
+    #@purchases = Purchase.paginate :page=>params[:page], 
+     # :purchase=>'created_at desc', :per_page => 10
 
     respond_to do |format|
       format.html # index.html.erb
