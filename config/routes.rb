@@ -1,4 +1,6 @@
 Pp::Application.routes.draw do
+  resources :drinks
+
   get 'admin' => 'admin#index'
 
   controller :sessions do
@@ -14,6 +16,8 @@ Pp::Application.routes.draw do
   resources :preferences
 
   resources :orders
+
+  resources :ingredients
 
   get "store/index"
 
