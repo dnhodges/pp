@@ -40,11 +40,15 @@ class IncludeDrinksController < ApplicationController
   # POST /include_drinks
   # POST /include_drinks.json
   def create
-    @include_drink = IncludeDrink.new(params[:include_drink])
+    #@include_drink = IncludeDrink.new(params[:include_drink])
+    @order = current_order
+
+    drink = Drink.find(params[:drink_id])
+    @include_drink = @order.add_drink(drink.id)
 
     respond_to do |format|
       if @include_drink.save
-        format.html { redirect_to @include_drink, notice: 'Include drink was successfully created.' }
+        format.html { redirect_to store_url, notice: 'Include drink was successfully created.' }
         format.json { render json: @include_drink, status: :created, location: @include_drink }
       else
         format.html { render action: "new" }

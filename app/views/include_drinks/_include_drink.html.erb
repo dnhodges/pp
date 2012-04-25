@@ -1,0 +1,11 @@
+
+<%# if include_drink.drink %>
+<tr>
+	<td><%= include_drink.quantity %> &times;</td>
+	<td><%= include_drink.drink.name %></td>
+	<td><%= include_drink.drink.description %></td>
+	<%#= pref.pizza.price %>
+	<td class="item_price"><%= number_to_currency(include_drink.drink.price * include_drink.quantity) %></td>
+	<!--<td><%#= button_to 'Delete this line', preference, method: :delete, confirm: 'Are you sure?' %></td>-->
+</tr>
+<%# end %>

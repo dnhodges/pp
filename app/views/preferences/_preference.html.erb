@@ -9,20 +9,3 @@
 	<!--<td><%#= button_to 'Delete this line', preference, method: :delete, confirm: 'Are you sure?' %></td>-->
 </tr>
 <% end %>
-
-<% if preference.drinks %>
-
-	<% for drink in preference.drinks %>
-		<tr>
-			<td><%= drink.name %> </td>
-			<td><%= drink.description %></td>
-			<%#= pref.pizza.price %>
-			<td class="item_price"><%= number_to_currency(drink.price) %></td>
-			<!--<td><%#= button_to 'Delete this line', preference, method: :delete, confirm: 'Are you sure?' %></td>-->
-		</tr>
-
-	<% end %>
-<% end %>
-
-
-<% 

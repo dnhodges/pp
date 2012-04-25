@@ -49,12 +49,6 @@ class PreferencesController < ApplicationController
       @preference = @order.add_pizza(pizza.id)
     end
 
-    if params[:drink_id]
-      drink = Drink.find(params[:drink_id])
-      @preference = @order.add_drink(drink.id)
-      include_drink = @preference.add_include_drink(drink.id, @preference.id)
-    end
-
     #drink = Drink.find(params[:drink_id])
     respond_to do |format|
       if @preference.save

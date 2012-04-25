@@ -3,10 +3,11 @@
 <table>
 	<%= render(order.preferences) %>
 
+	<%= render(order.include_drinks) %>
 
 	<tr class="total_line">
 		<td colspan="3"><br/>Total: </td>
-		<td class="total_cell"><br/><%#= number_to_currency(order.total_price) %></td>
+		<td class="total_cell"><br/><%= number_to_currency(order.total_price) %></td>
 	</tr>
 
 </table>
