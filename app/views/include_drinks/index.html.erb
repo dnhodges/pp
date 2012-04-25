@@ -1,0 +1,29 @@
+<h1>Listing include_drinks</h1>
+
+<table>
+  <tr>
+    <th>Drink</th>
+    <th>Preference</th>
+    <th>Quantity</th>
+    <th>Order ID</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @include_drinks.each do |include_drink| %>
+  <tr>
+    <td><%= include_drink.drink_id %></td>
+    <td><%= include_drink.preference_id %></td>
+    <td><%= include_drink.quantity %></td>
+    <td><%= Preference.find(include_drink.preference_id).order_id %></td>
+
+    <td><%= link_to 'Show', include_drink %></td>
+    <td><%= link_to 'Edit', edit_include_drink_path(include_drink) %></td>
+    <td><%= link_to 'Destroy', include_drink, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Include drink', new_include_drink_path %>

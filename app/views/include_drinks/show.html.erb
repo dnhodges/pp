@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Drink:</b>
+  <%= @include_drink.drink_id %>
+</p>
+
+<p>
+  <b>Preference:</b>
+  <%= @include_drink.preference_id %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @include_drink.quantity %>
+</p>
+
+
+<%= link_to 'Edit', edit_include_drink_path(@include_drink) %> |
+<%= link_to 'Back', include_drinks_path %>

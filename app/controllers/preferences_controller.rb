@@ -43,9 +43,19 @@ class PreferencesController < ApplicationController
   def create
     #@preference = Preference.new(params[:preference])
     @order = current_order
-    pizza = Pizza.find(params[:pizza_id])
-    @preference = @order.add_pizza(pizza.id)
 
+    if params[:pizza_id]
+      pizza = Pizza.find(params[:pizza_id])
+      @preference = @order.add_pizza(pizza.id)
+    end
+
+    if params[:drink_id]
+      drink = Drink.find(params[:drink_id])
+      @preference = @order.add_drink(drink.id)
+      include_drink = @preference.add_include_drink(drink.id, @preference.id)
+    end
+
+    #drink = Drink.find(params[:drink_id])
     respond_to do |format|
       if @preference.save
         format.html { redirect_to store_url }#@preference.order, notice: 'Preference was successfully created.' }

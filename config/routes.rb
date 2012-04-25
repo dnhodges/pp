@@ -1,4 +1,6 @@
 Pp::Application.routes.draw do
+  resources :include_drinks
+
   resources :drinks
 
   get 'admin' => 'admin#index'

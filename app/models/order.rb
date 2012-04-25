@@ -13,6 +13,23 @@ class Order < ActiveRecord::Base
 		current_preference
 	end
 
+
+	def add_drink(drink_id)
+		#build a new preference with this drink
+
+		
+		current_preference = preferences.build
+		#build a new include_drinks with this drink and this preference
+		#include_drinks.build
+		#look to see if there's already a line item with that drink id in the cart
+		#current_preference = preferences.find_by_drink_id(drink_id)
+
+		#if current_preference
+			#increment 
+		#else
+		current_preference
+	end
+
 	def total_price
 		preferences.to_a.sum { |pref| pref.total_price }
 	end

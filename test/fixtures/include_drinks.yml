@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  drink_id: 1
+  preference_id: 1
+  quantity: 1
+
+two:
+  drink_id: 1
+  preference_id: 1
+  quantity: 1

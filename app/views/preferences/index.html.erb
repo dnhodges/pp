@@ -2,17 +2,24 @@
 
 <table>
   <tr>
+    <th>Pref ID</th>
     <th>Pizza</th>
-    <th>Order</th>
-    <th></th>
+    <th>Order ID</th>
+    <th>Drink ID</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @preferences.each do |preference| %>
   <tr>
+    <td><%= preference.id %></td>
     <td><%= preference.pizza_id %></td>
     <td><%= preference.order_id %></td>
+
+      <% for drink in preference.drinks do %>
+        <td><%= drink.id %></td>
+      <% end %>
+
     <td><%= link_to 'Show', preference %></td>
     <td><%= link_to 'Edit', edit_preference_path(preference) %></td>
     <td><%= link_to 'Destroy', preference, confirm: 'Are you sure?', method: :delete %></td>
