@@ -6,13 +6,8 @@
 </p>
 
 <p>
-  <b>Quantity:</b>
-  <%= @preference.quantity %>
-</p>
-
-<p>
   <b>Price:</b>
-  <%= @preference.order_id %>
+  <%= number_to_currency(@preference.price) %>
 </p>
 
 <p>

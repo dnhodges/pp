@@ -59,7 +59,7 @@ class PreferencesController < ApplicationController
     #add preference to order
     #if params[:pizza_id]
      # pizza = Pizza.find(params[:pizza_id])
-    @preference = @order.add_preference_and_combo(pizza, ingredient, params[:quantity])
+    @preference = @order.add_preference_and_combo(pizza, ingredient, params[:q])
     #end
 
     #drink = Drink.find(params[:drink_id])

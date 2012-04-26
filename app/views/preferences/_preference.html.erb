@@ -1,11 +1,13 @@
 
-<% if preference.pizza %>
+<%# if preference.pizza %>
+
+<% for combo in preference.combos %>
 <tr>
-	<td><%= preference.quantity %> &times;</td>
-	<td><%= preference.pizza.size %></td>
-	<td><%= preference.pizza.crust %></td>
+	<td><%= combo.quantity  %> &times;</td>
+	<td><%= combo.pizza.size %></td>
+	<td><%= combo.ingredient.name %></td>
 	<%#= pref.pizza.price %>
-	<td class="item_price"><%= number_to_currency(preference.total_price) %></td>
+	<td class="item_price"><%= number_to_currency(preference.price) %></td>
 	<!--<td><%#= button_to 'Delete this line', preference, method: :delete, confirm: 'Are you sure?' %></td>-->
 </tr>
 <% end %>

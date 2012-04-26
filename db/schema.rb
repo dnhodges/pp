@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120426010005) do
+ActiveRecord::Schema.define(:version => 20120426015624) do
 
   create_table "combos", :force => true do |t|
     t.integer  "preference_id"
@@ -63,13 +63,11 @@ ActiveRecord::Schema.define(:version => 20120426010005) do
   end
 
   create_table "preferences", :force => true do |t|
-    t.integer  "pizza_id"
     t.integer  "order_id"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.integer  "quantity",    :default => 1
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "purchase_id"
-    t.integer  "combo_id"
+    t.decimal  "price"
   end
 
   create_table "purchases", :force => true do |t|

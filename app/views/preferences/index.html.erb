@@ -4,8 +4,7 @@
   <tr>
     <th>Pref ID</th>
     <th>Order ID</th>
-    <th>Quantity</th>
-    <th>Combo ID</th>
+    <th>Price</th>
     <th></th>
     <th></th>
   </tr>
@@ -14,8 +13,9 @@
   <tr>
     <td><%= preference.id %></td>
     <td><%= preference.order_id %></td>
-    <td><%= preference.quantity %></td>
-    <td><%= preference.combo_id %></td>
+    <td><%#= preference.quantity %></td>
+    <td><%= preference.price %></td>
+
 
     <td><%= link_to 'Show', preference %></td>
     <td><%= link_to 'Edit', edit_preference_path(preference) %></td>
