@@ -11,11 +11,23 @@
     </div>
   <% end %>
 
-    <%= select_tag(:ingredient, options_for_select(@ingredients.collect.each {|ingredient| [ingredient.name, ingredient.id]})) %>
+    <b>Ingredient:</b>
+        <br/>
+
+    <%= select_tag('ingredients[]', options_for_select(@ingredients.collect.each {|ingredient| [ingredient.name, ingredient.id]}), :multiple => true, :size => 4) %>
+ <br/>
+      <br/>
+
+    <b>Size:</b>
+
+    <br/>  
 
    <%= select_tag(:pizza_size, options_for_select(@pizzas.collect.each {|pizza| pizza.size})) %>
+    <br/>
 
-
+        <br/>
+    <b>Crust:</b>
+        <br/>
     <%= select_tag(:pizza_crust, options_for_select(@pizzas.collect.each {|pizza| pizza.crust})) %>
    <br/>
       <br/>

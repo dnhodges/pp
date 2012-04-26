@@ -16,8 +16,10 @@
     <%= combo.pizza.size %>
 
   	<%= combo.pizza.crust %>
-  	<%= combo.ingredient.name %>
 
+  	<% if combo.ingredient %> 
+  		<%= combo.ingredient.name %>
+  	<% end %>
 
   <% end %>
 </p>

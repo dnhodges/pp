@@ -49,8 +49,12 @@ class PreferencesController < ApplicationController
 
     #get pizza and ingredient from params
     pizza = Pizza.find_by_size_and_crust(params[:pizza_size], params[:pizza_crust])
-    ingredient = Ingredient.find(params[:ingredient])
 
+    ingredients = nil
+
+    if params[:ingredients]
+      ingredients = Ingredient.find(params[:ingredients])
+    end
     #using the current order
     #build a new preference
     #build a new combo with the above parameters
@@ -59,7 +63,7 @@ class PreferencesController < ApplicationController
     #add preference to order
     #if params[:pizza_id]
      # pizza = Pizza.find(params[:pizza_id])
-    @preference = @order.add_preference_and_combo(pizza, ingredient, params[:q])
+    @preference = @order.add_preference_and_combo(pizza, ingredients, params[:q])
     #end
 
     #drink = Drink.find(params[:drink_id])

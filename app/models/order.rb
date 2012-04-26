@@ -1,7 +1,13 @@
 class Order < ActiveRecord::Base
+	after_initialize :init
+
 	has_many :preferences, :dependent => :destroy
 	has_many :include_drinks
 	has_many :drinks, :through => :include_drinks
+
+	def init
+		self.price = 0.0
+	end
 	#has_many :pizzas, through: :preferences
 =begin
 	def add_pizza(pizza_id)
@@ -15,15 +21,34 @@ class Order < ActiveRecord::Base
 		current_preference
 	end
 =end
-	def add_preference_and_combo(pizza, ingredient, quantity)
+	def add_preference_and_combo(pizza, ingredients, quantity)
 		#want to see if there's already an pizza/order combination associated with the order
 
-		preference = self.preferences.build
-		combo = preference.combos.build(preference_id: preference.id, pizza_id: pizza.id, ingredient_id: ingredient.id, quantity: quantity)
+		preference = self.preferences.build(quantity: quantity)
 
-		preference.price = (pizza.price + ingredient.price) * quantity.to_i
-		#preference.quantity = quantity
 
+		if(ingredients)
+			ingredients.each { |ingredient| 
+
+			combo = preference.combos.build(preference_id: preference.id, pizza_id: pizza.id, ingredient_id: ingredient.id)
+			}
+		else
+			combo = preference.combos.build(preference_id: preference.id, pizza_id: pizza.id)
+		end
+
+		preference.price = pizza.price
+
+		if(ingredients)
+			ingredients.each { |ingredient| 
+				preference.price += ingredient.price
+			}
+		end
+
+		preference.price = preference.price * quantity.to_i
+
+
+		self.price += preference.price #update preference price
+		
 		preference
 	end
 

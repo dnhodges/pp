@@ -3,6 +3,24 @@
 <% end %>
 <h1>Your Order Options </h1>
 
+	<h3><%= link_to "Click to Place Order", :controller => 'preferences', :action =>'new' %></h3>
+   <% @pizzas.each do |pizza| %>
+		<div class="entry">
+		
+		  <h3> <b>Size: </b><%= pizza.size %></h3>
+
+		  <h3><b>Crust: </b><%= pizza.crust %></h3>
+
+
+
+			<div class="price_line">
+			  <span class="price">
+			  	<b>Price: </b><%= number_to_currency(pizza.price) %>
+				<%#= button_to 'Add to Order', preferences_path(pizza_id: pizza) %>
+			  </span>
+			</div>
+		</div>
+	<% end %>
 
 
    <% @drinks.each do |drink| %>
@@ -16,7 +34,7 @@
 			<div class="price_line">
 			  <span class="price">
 			  	<b>Price: </b><%= number_to_currency(drink.price) %>
-				<%= button_to 'Add to Order', include_drinks_path(drink_id: drink) %>
+				<%#= button_to 'Add to Order', include_drinks_path(drink_id: drink) %>
 			  </span>
 			</div>
 		</div>
