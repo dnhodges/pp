@@ -27,6 +27,9 @@ class PreferencesController < ApplicationController
   def new
     @preference = Preference.new
 
+    @pizzas = Pizza.order(:size)
+    @ingredients = Ingredient.order(:name)
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @preference }
@@ -44,15 +47,25 @@ class PreferencesController < ApplicationController
     #@preference = Preference.new(params[:preference])
     @order = current_order
 
-    if params[:pizza_id]
-      pizza = Pizza.find(params[:pizza_id])
-      @preference = @order.add_pizza(pizza.id)
-    end
+    #get pizza and ingredient from params
+    pizza = Pizza.find_by_size_and_crust(params[:pizza_size], params[:pizza_crust])
+    ingredient = Ingredient.find(params[:ingredient])
+
+    #using the current order
+    #build a new preference
+    #build a new combo with the above parameters
+    #adjust the preference quantity
+
+    #add preference to order
+    #if params[:pizza_id]
+     # pizza = Pizza.find(params[:pizza_id])
+    @preference = @order.add_preference_and_combo(pizza, ingredient, params[:quantity])
+    #end
 
     #drink = Drink.find(params[:drink_id])
     respond_to do |format|
       if @preference.save
-        format.html { redirect_to store_url }#@preference.order, notice: 'Preference was successfully created.' }
+        format.html { redirect_to @preference }#@preference.order, notice: 'Preference was successfully created.' }
         format.json { render json: @preference, status: :created, location: @preference }
       else
         format.html { render action: "new" }

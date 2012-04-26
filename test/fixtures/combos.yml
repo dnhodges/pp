@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  preference_id: 1
+  pizza_id: 1
+  ingredient_id: 1
+
+two:
+  preference_id: 1
+  pizza_id: 1
+  ingredient_id: 1

@@ -11,13 +11,17 @@
     </div>
   <% end %>
 
+    <%= select_tag(:ingredient, options_for_select(@ingredients.collect.each {|ingredient| [ingredient.name, ingredient.id]})) %>
+
+   <%= select_tag(:pizza_size, options_for_select(@pizzas.collect.each {|pizza| pizza.size})) %>
+
+
+    <%= select_tag(:pizza_crust, options_for_select(@pizzas.collect.each {|pizza| pizza.crust})) %>
+   <br/>
+      <br/>
   <div class="field">
-    <%= f.label :pizza_id %><br />
-    <%= f.number_field :pizza_id %>
-  </div>
-  <div class="field">
-    <%= f.label :order_id %><br />
-    <%= f.number_field :order_id %>
+      <%= label_tag :quantity, "Enter quantity:" %><br />
+      <%= number_field_tag :quantity %>
   </div>
   <div class="actions">
     <%= f.submit %>

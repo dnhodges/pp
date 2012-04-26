@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Preference ID:</b>
+  <%= @combo.preference_id %>
+</p>
+
+<p>
+  <b>Pizza ID:</b>
+  <%= @combo.pizza_id %>
+</p>
+
+<p>
+  <b>Ingredient ID:</b>
+  <%= @combo.ingredient_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_combo_path(@combo) %> |
+<%= link_to 'Back', combos_path %>

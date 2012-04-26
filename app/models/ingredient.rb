@@ -1,3 +1,5 @@
 class Ingredient < ActiveRecord::Base
-	has_and_belongs_to_many :pizzas
+	has_many :combos
+	has_many :pizzas, :through => :combos
+	#has_many :preferences, :through => :combos
 end

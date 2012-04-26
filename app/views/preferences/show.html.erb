@@ -1,14 +1,32 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Pizza:</b>
-  <%= @preference.pizza_id %>
-</p>
-
-<p>
   <b>Order:</b>
   <%= @preference.order_id %>
 </p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @preference.quantity %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @preference.order_id %>
+</p>
+
+<p>
+  <b>Combo:</b>
+  <% for combo in @preference.combos.each do %>
+    <%= combo.pizza.size %>
+
+  	<%= combo.pizza.crust %>
+  	<%= combo.ingredient.name %>
+
+
+  <% end %>
+</p>
+
 
 
 <%= link_to 'Edit', edit_preference_path(@preference) %> |

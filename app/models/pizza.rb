@@ -1,9 +1,11 @@
 class Pizza < ActiveRecord::Base
 	has_many :preferences
 	has_many :purchases, through: :preferences
-	before_destroy :ensure_not_referenced_by_any_preference
+	#before_destroy :ensure_not_referenced_by_any_preference
 
-
+	has_many :combos
+	has_many :ingredients, :through => :combos
+	#has_many :preferences, :through => :combos
 	private
 
 		def ensure_not_referenced_by_any_preference

@@ -1,0 +1,29 @@
+<h1>Listing combos</h1>
+
+<table>
+  <tr>
+    <th>Preference ID</th>
+    <th>Pizza ID</th>
+    <th>Ingredient ID</th>
+    <th>Quantity</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @combos.each do |combo| %>
+  <tr>
+    <td><%= combo.preference_id %></td>
+    <td><%= combo.pizza_id %></td>
+    <td><%= combo.ingredient_id %></td>
+    <td><%= combo.quantity %></td>
+
+    <td><%= link_to 'Show', combo %></td>
+    <td><%= link_to 'Edit', edit_combo_path(combo) %></td>
+    <td><%= link_to 'Destroy', combo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Combo', new_combo_path %>
