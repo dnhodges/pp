@@ -18,7 +18,14 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    orders_to_destroy = Order.find_by_user_id(session[:user_id])
   	session[:user_id] = nil
+
+    #orders_to_destroy.collect.each { |order_id|
+    Order.destroy(orders_to_destroy)
+    #}
+
   	redirect_to store_url, notice: "Logged out"
+
   end
 end
