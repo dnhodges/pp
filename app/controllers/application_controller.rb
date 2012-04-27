@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   #before_filter :authorize
+
+  helper_method :current_user
   protect_from_forgery
 
   protected
@@ -14,11 +16,25 @@ class ApplicationController < ActionController::Base
   end
   
   private
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
 	def current_order 
 		Order.find(session[:order_id])
 	rescue ActiveRecord::RecordNotFound 
-		order = Order.create#@user.orders.create
-		session[:order_id] = order.id
-		order
+
+    if session[:user_id]#@current_user
+      user = User.find(session[:user_id])
+		  order = user.orders.create #Order.create#@user.orders.create
+		  session[:order_id] = order.id
+      return order
+    else
+        redirect_to login_url, notice: "Please log in"
+    end
+		#order
 	end
+
+
 end

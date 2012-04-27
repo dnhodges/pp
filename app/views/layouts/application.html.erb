@@ -15,7 +15,8 @@
 	<div id="columns">
 		<div id="side"> 
 			<div id="order">
-				<% if session[:user_id] %>
+				<% if current_user %>
+				<%# if session[:user_id] %>
 					<% if @order %>
 						<%= render @order %>
 					<% end %>
@@ -29,7 +30,8 @@
 
 			</ul> 
 
-			<% if session[:user_id] %>
+			<% if current_user %>
+			<%# if session[:user_id] %>
 				<ul>
 					<li><%= link_to 'Purchases', purchases_path %></li>
 					<li><%= link_to 'Pizzas', pizzas_path %></li>

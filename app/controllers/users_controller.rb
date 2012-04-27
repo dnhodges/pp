@@ -57,7 +57,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     respond_to do |format|
-      if @user.save
+      if @user.save #rm may want to put 'root_url' here
         format.html { redirect_to users_url, notice: "User #{@user.username} was successfully created." }
         format.json { render json: @user, status: :created, location: @user }
       else
