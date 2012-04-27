@@ -15,17 +15,18 @@
 	<div id="columns">
 		<div id="side"> 
 			<div id="order">
-				<% if @order %>
-					<%= render @order %>
+				<% if session[:user_id] %>
+					<% if @order %>
+						<%= render @order %>
+					<% end %>
 				<% end %>
 			</div>
 
 			<ul>
 				<%= link_to 'Home', store_path %> <br/>
-				<%= link_to 'Register', new_user_path %>
-				<li><a href="http://www..../faq">Questions</a></li> 
-				<li><a href="http://www..../news">News</a></li> 
-				<li><a href="http://www..../contact">Contact</a></li>
+				<%= link_to 'Register', new_user_path %> <br/>
+				<%= link_to 'Login', login_path %> 
+
 			</ul> 
 
 			<% if session[:user_id] %>
@@ -33,6 +34,8 @@
 					<li><%= link_to 'Purchases', purchases_path %></li>
 					<li><%= link_to 'Pizzas', pizzas_path %></li>
 					<li><%= link_to 'Users', users_path %></li>
+					<li><%= link_to 'Logout', logout_path, method: :delete %></li>
+
 				</ul>
 				<%= button_to 'Logout', logout_path, method: :delete %>
 			<% end %>
