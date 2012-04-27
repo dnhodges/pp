@@ -4,6 +4,7 @@ class StoreController < ApplicationController
 	def index
 		@pizzas = Pizza.order(:size)
 		@order = current_order
+    #@user = User.find(session[:user_id])
 		@drinks = Drink.order(:name)
 		@ingredients = Ingredient.order(:name)
 	end

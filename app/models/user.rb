@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	after_initialize :init
-
+	has_many :orders
 	#after_destroy :ensure_an_admin_remains
 
 	validates :username, presence: true, uniqueness: true

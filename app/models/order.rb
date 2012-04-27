@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
 	has_many :include_drinks
 	has_many :drinks, :through => :include_drinks
 
-	#belongs_to :user
+	belongs_to :user
 	def init
 		self.price = 0.0
 	end
