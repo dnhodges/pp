@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
   		end
   	end
 
+  def admin
+
+  end
+  
   private
 	def current_order 
 		Order.find(session[:order_id])

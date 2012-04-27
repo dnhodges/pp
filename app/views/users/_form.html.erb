@@ -16,21 +16,46 @@
     <legend>Enter User Details</legend>
 
     <div class="field">
-      <%= f.label :name %>:
-      <%= f.text_field :name %>
+    <%= f.label :first_name, "First:" %>
+    <%= f.text_field :first_name %>
+    </div>
+
+    <div class="field">
+    <%= f.label :last_name, "Last:" %>
+    <%= f.text_field :last_name %>
     </div>
     <div class="field">
-      <%= f.label :password, 'Password' %>:
-      <%= f.password_field :password, size: 40 %>
+    <%= f.label :username, "Username:" %>
+    <%= f.text_field :username %>
+    </div>
+
+    <div class="field">
+    <%= f.label :email, "E-Mail:" %>
+    <%= f.text_field :email %>
+    </div>
+
+    <div class="field">
+    <%= f.label :password, "Password:" %>
+    <%= f.password_field :password  %>
+    </div>
+
+    <div class="field">
+    <%= f.label :address, "Address:" %>
+    <%= f.text_field :address %>
+    </div>
+
+    <div class="field">
+    <%= f.label :state, "State:" %>
+    <%= f.text_field :state %>
     </div>
     <div class="field">
-      <%= f.label :password_confirmation, 'Confirm' %>:
-      <%= f.password_field :password_confirmation, size: 40 %>
+    <%= f.label :zip, "Zip:" %>
+    <%= f.text_field :zip %>
     </div>
+
     <div class="actions">
       <%= f.submit %>
     </div>
-
     </fieldset>
   <% end %>
 </div>

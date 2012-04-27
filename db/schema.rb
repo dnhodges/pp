@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120426171751) do
+ActiveRecord::Schema.define(:version => 20120426225300) do
 
   create_table "combos", :force => true do |t|
     t.integer  "preference_id"
@@ -82,10 +82,18 @@ ActiveRecord::Schema.define(:version => 20120426171751) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
+    t.string   "first_name"
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "last_name"
+    t.string   "username"
+    t.string   "email"
+    t.text     "address"
+    t.string   "state"
+    t.integer  "zip"
+    t.integer  "amount_spent"
+    t.boolean  "is_active"
   end
 
 end

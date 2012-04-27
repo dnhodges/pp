@@ -1,14 +1,49 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @user.name %>
+  <b>Username:</b>
+  <%= @user.username %>
 </p>
 
 <p>
-  <b>Password digest:</b>
-  <%= @user.password_digest %>
+  <b>First:</b>
+  <%= @user.first_name %>
 </p>
+<p>
+  <b>Last:</b>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @user.address %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @user.state %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%= @user.zip %>
+</p>
+
+<p>
+  <b>Is Active:</b>
+  <%= @user.is_active %>
+</p>
+
+<p>
+  <b>Amount spent:</b>
+  <%= number_to_currency(@user.amount_spent) %>
+</p>
+
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

@@ -1,4 +1,6 @@
 Pp::Application.routes.draw do
+  get "customer/index"
+
   resources :include_drinks
 
   resources :drinks

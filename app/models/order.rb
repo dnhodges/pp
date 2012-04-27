@@ -5,22 +5,11 @@ class Order < ActiveRecord::Base
 	has_many :include_drinks
 	has_many :drinks, :through => :include_drinks
 
+	#belongs_to :user
 	def init
 		self.price = 0.0
 	end
-	#has_many :pizzas, through: :preferences
-=begin
-	def add_pizza(pizza_id)
-		current_preference = preferences.find_by_pizza_id(pizza_id)
 
-		if current_preference
-			current_preference.quantity += 1
-		else
-			current_preference = preferences.build(pizza_id: pizza_id)
-		end
-		current_preference
-	end
-=end
 	def add_preference_and_combo(pizza, ingredients, quantity)
 		#want to see if there's already an pizza/order combination associated with the order
 
@@ -48,7 +37,7 @@ class Order < ActiveRecord::Base
 
 
 		self.price += preference.price #update preference price
-		
+
 		preference
 	end
 
