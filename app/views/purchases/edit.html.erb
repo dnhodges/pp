@@ -1,6 +1,50 @@
 <h1>Editing purchase</h1>
 
-<%= render 'form' %>
+<%= form_for(@purchase) do |f| %>
+  <% if @purchase.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@purchase.errors.count, "error") %> prohibited this purchase from being saved:</h2>
+
+      <ul>
+      <% @purchase.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label> <%= f.label :order_id, "Order ID:" %> </label><br/>
+    <%= f.text_field :order_id %>
+  </div>
+
+  <div class="field">
+    <label> <%= f.label :driver_id, "Driver ID:" %> </label><br/>
+    <%= f.text_field :driver_id %>
+  </div>
+
+  <div class="field">
+    <label><%= f.label :pay_type, "Payment:" %></label>
+    <%= f.select :pay_type, Purchase::PAYMENT_TYPES, prompt: 'Select a payment method' %>
+  </div>
+
+  <div class="field">
+    <label> <%= f.label :cc_number, "CC Number (VISA only)" %> </label><br/>
+    <%= f.text_field :cc_number %>
+  </div>
+    <div class="field">
+    <label> <%= f.label :is_delivered, "Delivered?" %> </label><br/>
+    <%= f.text_field :is_delivered %>
+  </div>
+
+
+
+
+
+  <div class="actions">
+    <%= f.submit 'Place Order' %>
+  </div>
+<% end %>
 
 <%= link_to 'Show', @purchase %> |
 <%= link_to 'Back', purchases_path %>

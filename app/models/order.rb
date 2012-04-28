@@ -41,6 +41,8 @@ class Order < ActiveRecord::Base
 			self.price = preference.price
 		end
 
+		self.save
+
 		preference
 	end
 

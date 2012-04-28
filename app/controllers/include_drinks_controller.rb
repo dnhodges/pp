@@ -46,6 +46,14 @@ class IncludeDrinksController < ApplicationController
     drink = Drink.find(params[:drink_id])
     @include_drink = @order.add_drink(drink.id)
 
+    if @order.price
+      @order.price += drink.price
+    else
+      @order.price = drink.price
+    end
+
+    @order.save
+
     respond_to do |format|
       if @include_drink.save
         format.html { redirect_to store_url, notice: 'Include drink was successfully created.' }
