@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-	after_initialize :init
+	#after_initialize :init
 
 	has_many :preferences, :dependent => :destroy
 	has_many :include_drinks
@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
 
 	belongs_to :user
 	def init
-		self.price = 0.0
+		#self.price = 0.0
 	end
 
 	def add_preference_and_combo(pizza, ingredients, quantity)
