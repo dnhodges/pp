@@ -30,7 +30,10 @@ class SessionsController < ApplicationController
   	session[:user_id] = nil
 
     orders_to_destroy.collect.each { |order_id|
-    Order.destroy(orders_to_destroy)
+      #if order hasn't been purchased, destroy it upon logout, keep it in the db otherwise
+        if !Purchase.find_by_order_id(order_id)
+          Order.destroy(orders_to_destroy) 
+        end 
     }
 
   	redirect_to store_url, notice: "Logged out"

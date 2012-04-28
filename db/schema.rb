@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120428013943) do
+ActiveRecord::Schema.define(:version => 20120428154043) do
 
   create_table "combos", :force => true do |t|
     t.integer  "preference_id"
@@ -74,12 +74,13 @@ ActiveRecord::Schema.define(:version => 20120428013943) do
   end
 
   create_table "purchases", :force => true do |t|
-    t.string   "name"
-    t.text     "address"
-    t.string   "email"
     t.string   "pay_type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "order_id"
+    t.integer  "driver_id"
+    t.boolean  "is_delivered"
+    t.string   "cc_number"
   end
 
   create_table "users", :force => true do |t|

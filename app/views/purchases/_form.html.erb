@@ -12,20 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, size: 40 %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_area :address, rows: 3, cols: 40 %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, size: 40 %>
-  </div>
-  <div class="field">
-    <%= f.label :pay_type %><br />
+    <label><%= f.label :pay_type, "Payment:" %></label>
     <%= f.select :pay_type, Purchase::PAYMENT_TYPES, prompt: 'Select a payment method' %>
+  </div>
+
+    <br/><br/><br/>
+  <div class="field">
+    <label> <%= f.label :cc_number, "VISA number (if credit)" %> </label><br/>
+    <%= f.text_field :cc_number, prompt: 'If Credit, enter number (VISA only)' %>
   </div>
   <div class="actions">
     <%= f.submit 'Place Order' %>

@@ -2,21 +2,22 @@
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Email</th>
+    <th>Order ID</th>
+    <th>Driver ID</th>
     <th>Pay type</th>
-    <th></th>
+    <th>CC Number</th>
+    <th>Is Delivered?</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @purchases.each do |purchase| %>
   <tr>
-    <td><%= purchase.name %></td>
-    <td><%= purchase.address %></td>
-    <td><%= purchase.email %></td>
+    <td><%= purchase.order_id %></td>
+    <td><%= purchase.driver_id %></td>
     <td><%= purchase.pay_type %></td>
+    <td><%= purchase.cc_number %></td>
+    <td><%= purchase.is_delivered %></td>
     <td><%= link_to 'Show', purchase %></td>
     <td><%= link_to 'Edit', edit_purchase_path(purchase) %></td>
     <td><%= link_to 'Destroy', purchase, confirm: 'Are you sure?', method: :delete %></td>

@@ -21,13 +21,14 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+
+=begin
 	def current_order 
 		Order.find(session[:order_id])
 	rescue ActiveRecord::RecordNotFound 
-
     if session[:user_id]#@current_user
       user = User.find(session[:user_id])
-		  order = user.orders.create #Order.create#@user.orders.create
+		  order = user.orders.create #Order.create#@user.orders.create #if there's no order, create one
 		  session[:order_id] = order.id
       return order
     else
@@ -35,6 +36,6 @@ class ApplicationController < ActionController::Base
     end
 		#order
 	end
-
+=end
 
 end

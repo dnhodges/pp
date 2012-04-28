@@ -50,18 +50,21 @@ class PurchasesController < ApplicationController
   # POST /purchases
   # POST /purchases.json
   def create
-    @purchase = Purchase.new(params[:purchase])
-    @purchase.add_preferences_from_order(current_order)
+
+    @purchase = current_order.build_purchase(params[:purchase])
+    @purchase.is_delivered = false
+    #@purchase = Purchase.new(params[:purchase])
+    #@purchase.add_preferences_from_order(current_order)
 
     respond_to do |format|
       if @purchase.save
-        Order.destroy(session[:order_id])
-        session[:order_id] = nil
+        #Order.destroy(session[:order_id])
+        #session[:order_id] = nil
         format.html { redirect_to store_url, notice: 'Thank you for your purchase.'}
         #format.html { redirect_to @purchase, notice: 'Purchase was successfully created.' }
         format.json { render json: @purchase, status: :created, location: @purchase }
       else
-        @order = current_order
+        #@order = current_order
         format.html { render action: "new" }
         format.json { render json: @purchase.errors, status: :unprocessable_entity }
       end

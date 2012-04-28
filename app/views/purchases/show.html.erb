@@ -1,25 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @purchase.name %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @purchase.address %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @purchase.email %>
-</p>
-
-<p>
-  <b>Pay type:</b>
+  <b>Payment Type:</b>
   <%= @purchase.pay_type %>
 </p>
 
+<p>
+  <b>Order ID:</b>
+  <%= @purchase.order_id %>
+</p>
+
+<p>
+  <b>Driver ID:</b>
+  <%= @purchase.driver_id %>
+</p>
+
+<p>
+  <b>CC Number (if credit):</b>
+  <%= @purchase.cc_number %>
+</p>
+
+<p>
+  <b>Is Delivered:</b>
+  <%= @purchase.is_delivered %>
+</p>
 
 <%= link_to 'Edit', edit_purchase_path(@purchase) %> |
 <%= link_to 'Back', purchases_path %>
