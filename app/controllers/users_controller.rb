@@ -56,6 +56,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
+    @user.is_active = true
     respond_to do |format|
       if @user.save #rm may want to put 'root_url' here
         format.html { redirect_to users_url, notice: "User #{@user.username} was successfully created." }
@@ -72,8 +73,15 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
+
     respond_to do |format|
       if @user.update_attributes(params[:user])
+            if params[:is_active] == "true"
+              @user.is_active = true
+            elsif params[:is_active] == "false"
+              @user.is_active = false
+            end 
+
         format.html { redirect_to users_url, notice: "User #{@user.username} was successfully updated." }
         format.json { head :no_content }
       else

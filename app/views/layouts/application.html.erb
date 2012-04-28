@@ -33,10 +33,12 @@
 			<% if current_user %>
 			<%# if session[:user_id] %>
 				<ul>
+
 					<li><%= link_to 'Purchases', purchases_path %></li>
 					<li><%= link_to 'Pizzas', pizzas_path %></li>
 					<li><%= link_to 'Users', users_path %></li>
 					<li><%= link_to 'Logout', logout_path, method: :delete %></li>
+					<li><%= link_to 'Edit Profile', edit_user_path(session[:user_id]) %></li>
 
 				</ul>
 				<%= button_to 'Logout', logout_path, method: :delete %>

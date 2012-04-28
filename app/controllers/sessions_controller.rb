@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
   def create
   	user = User.find_by_username(params[:username])
-  	if user and user.authenticate(params[:password])
+  	if user and user.authenticate(params[:password]) and user.is_active == true
   		session[:user_id] = user.id
       redirect_to store_url, notice: "Logged in"
   		#redirect_to admin_url #need a separate if/else for the name "admin"
