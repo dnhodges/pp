@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120427110439) do
+ActiveRecord::Schema.define(:version => 20120428013943) do
 
   create_table "combos", :force => true do |t|
     t.integer  "preference_id"
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(:version => 20120427110439) do
     t.string   "state"
     t.integer  "zip"
     t.integer  "amount_spent"
-    t.boolean  "is_active"
+    t.string   "is_active"
   end
 
 end

@@ -1,5 +1,6 @@
 class Purchase < ActiveRecord::Base
-	has_many :preferences, dependent: :destroy
+	#has_many :preferences, dependent: :destroy
+	belongs_to :order
 	PAYMENT_TYPES = ["Check", "Credit card", "Purchase order"]
 
 	validates :name, :address, :email, presence: true

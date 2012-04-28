@@ -26,7 +26,7 @@ Pp::Application.routes.draw do
 
   resources :combos
 
-  get "store/index"
+  get "store/index", as: 'store'
 
   resources :pizzas do
     get :who_bought, on: :member
@@ -34,6 +34,7 @@ Pp::Application.routes.draw do
 
   #root to: 'preferences#new'
   root to: 'store#index', as: 'store'
+  #root to: 'sessions#new', as: 'login'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -56,6 +56,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
+    @user.amount_spent = 0
     @user.is_active = true
     respond_to do |format|
       if @user.save #rm may want to put 'root_url' here
