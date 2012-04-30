@@ -26,6 +26,15 @@ Pp::Application.routes.draw do
 
   resources :combos
 
+ # get 'users/history', as: 'history'
+ # match 'history/:id' => 'users#history'
+
+  match 'users/:id/history' => 'users#history', :as => :history
+
+  #match 'orders/:id/reorder' => 'orders#reorder', :as => :reorder
+
+  match 'purchases/:id/reorder' => 'purchases#reorder', :as => :reorder
+
   get "store/index", as: 'store'
 
   resources :pizzas do

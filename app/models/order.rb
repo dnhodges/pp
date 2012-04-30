@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
 	has_many :include_drinks, :dependent => :destroy #destroy the relationship between drink and order
 	has_many :drinks, :through => :include_drinks
 
-	has_one :purchase, :dependent => :destroy #destroy the purchase when order is deleted
+	has_many :purchases, :dependent => :destroy #destroy the purchase when order is deleted
 
 	belongs_to :user
 

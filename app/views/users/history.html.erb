@@ -1,0 +1,27 @@
+<h1> History </h1>
+
+<% for order in @orders.collect do %>
+	<% for preference in order.preferences do %>
+
+	<td><%= preference.quantity  %> &times;</td>
+
+		<% for combo in preference.combos %>
+		<tr>
+			<td><%= combo.pizza.size %></td>
+			<td><%= combo.pizza.crust %></td>
+
+			<% if combo.ingredient %>
+				<td><%= combo.ingredient.name %></td>
+			<% else %>
+				<td></td>
+			<% end %>
+			<%#= pref.pizza.price %>
+			<td class="item_price"><%= number_to_currency(preference.price) %></td>
+			<!--<td><%#= button_to 'Delete this line', preference, method: :delete, confirm: 'Are you sure?' %></td>-->
+		</tr>
+		<% end %>
+
+		<%= link_to "Reorder?", reorder_url(:id => order.id) %>
+		<br/><br/>
+	<% end %>
+<% end %>

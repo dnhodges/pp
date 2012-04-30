@@ -51,11 +51,11 @@ class PurchasesController < ApplicationController
   # POST /purchases.json
   def create
 
-    @purchase = current_order.build_purchase(params[:purchase])
+    @purchase = current_order.purchases.build(params[:purchase])
     @purchase.is_delivered = false
     #@purchase = Purchase.new(params[:purchase])
     #@purchase.add_preferences_from_order(current_order)
-
+    session[:order_id] = nil
     respond_to do |format|
       if @purchase.save
         #Order.destroy(session[:order_id])
@@ -99,4 +99,24 @@ class PurchasesController < ApplicationController
     end
   end
 
+  def reorder
+    @order = Order.find(params[:id])
+
+    prev_purchase = Purchase.find_by_order_id(@order.id)
+
+    @purchase = @order.purchases.build(pay_type: prev_purchase.pay_type, cc_number: prev_purchase.cc_number, order_id: prev_purchase.order_id)
+
+    @order.save
+    #session[:order_id] = @order.id
+    @purchase.is_delivered = false
+
+    respond_to do |format|
+      if @purchase.save
+        format.html { redirect_to store_url, notice: "New purchase has been sumbitted."}
+      else
+        format.html { render action: "new"}
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+  end 
 end

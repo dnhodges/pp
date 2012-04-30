@@ -108,4 +108,11 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  def history
+    @user = User.find(params[:id])
+
+    @orders = Order.find_all_by_user_id(params[:id])
+  end
 end

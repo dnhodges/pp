@@ -26,17 +26,21 @@ class SessionsController < ApplicationController
 
   def destroy
     #destroy all orders associated with a login IF they haven't been purchased (i.e., aren't referenced in the Purchases table)
+    
+    #session[:user_id] = nil
+    #redirect_to store_url, notice: "Logged out"
+
     orders_to_destroy = User.find(session[:user_id]).orders#Order.find_by_user_id(session[:user_id])
   	session[:user_id] = nil
+    session[:order_id] = nil
 
     orders_to_destroy.collect.each { |order_id|
       #if order hasn't been purchased, destroy it upon logout, keep it in the db otherwise
         if !Purchase.find_by_order_id(order_id)
-          Order.destroy(orders_to_destroy) 
+          Order.destroy(order_id) 
         end 
     }
 
   	redirect_to store_url, notice: "Logged out"
-
   end
 end

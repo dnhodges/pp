@@ -91,4 +91,24 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  def reorder
+    order = Order.find(params[:id])
+
+    prev_purchase = Purchase.find_by_order_id(order.id)
+
+    @purchase = @order.purchases.build(params[prev_purchase])
+    #session[:order_id] = @order.id
+
+    respond_to do |format|
+      if @order.save
+        format.html { redirect_to store_url, notice: "Cart has been updated."}
+      else
+        format.html { render action: "new"}
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+  end 
+
 end
