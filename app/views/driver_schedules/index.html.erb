@@ -1,0 +1,27 @@
+<h1>Listing driver_schedules</h1>
+
+<table>
+  <tr>
+    <th>Driver</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @driver_schedules.each do |driver_schedule| %>
+  <tr>
+    <td><%= driver_schedule.driver_id %></td>
+    <td><%= driver_schedule.start_time %></td>
+    <td><%= driver_schedule.end_time %></td>
+    <td><%= link_to 'Show', driver_schedule %></td>
+    <td><%= link_to 'Edit', edit_driver_schedule_path(driver_schedule) %></td>
+    <td><%= link_to 'Destroy', driver_schedule, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Driver schedule', new_driver_schedule_path %>

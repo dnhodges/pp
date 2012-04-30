@@ -1,4 +1,6 @@
 Pp::Application.routes.draw do
+  resources :driver_schedules
+
   resources :drivers
 
   get "customer/index"

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  driver_id: 1
+  start_time: 2012-04-30 17:15:58
+  end_time: 2012-04-30 17:15:58
+
+two:
+  driver_id: 1
+  start_time: 2012-04-30 17:15:58
+  end_time: 2012-04-30 17:15:58

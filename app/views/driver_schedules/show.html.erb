@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Driver:</b>
+  <%= @driver_schedule.driver_id %>
+</p>
+
+<p>
+  <b>Start time:</b>
+  <%= @driver_schedule.start_time %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%= @driver_schedule.end_time %>
+</p>
+
+
+<%= link_to 'Edit', edit_driver_schedule_path(@driver_schedule) %> |
+<%= link_to 'Back', driver_schedules_path %>
