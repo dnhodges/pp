@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  username: MyString
+  first_name: MyString
+  last_name: MyString
+  phone: 1
+  address: MyText
+  salary: 1
+  total_hours: 1
+  vehicle: MyString
+  cost_per_mile: 1
+  current_location: MyString
+
+two:
+  username: MyString
+  first_name: MyString
+  last_name: MyString
+  phone: 1
+  address: MyText
+  salary: 1
+  total_hours: 1
+  vehicle: MyString
+  cost_per_mile: 1
+  current_location: MyString
