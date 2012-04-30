@@ -1,8 +1,41 @@
-<h1> History </h1>
+<h1> Invoice/Order History </h1>
 
 <% for order in @orders.collect do %>
-	<% for preference in order.preferences do %>
 
+	<% for purchase in order.purchases do %>
+		</br>
+
+		<b>Payment type:</b> <td><%=  purchase.pay_type %> </td>		</br>
+
+		<% if purchase.cc_number %>
+		<b>CC Number:</b> <td><%= purchase.cc_number %> </td>		</br>
+
+		<% end %>
+
+		<% if purchase.driver_id %>
+		<b>Driver ID:</b> <td><%= purchase.driver_id %> </td>		</br>
+		<% end %>
+
+		<% if purchase.delivery_time %>
+		<b>Delivery Time:</b> <td><%= purchase.delivery_time.strftime("%H:%M") %> </td>		</br>
+		<% else %>
+		<b>Expected delivery time:</b> <td><%= Time.now.strftime("%H:%M")  %> </td>	</br>
+		<% end %>
+
+		<br/>
+	<% end %>
+	
+	<% for include_drink in order.include_drinks do %>
+		<b>Drink: </b>
+		<td><%= include_drink.quantity  %> &times;</td>
+		<td><%= include_drink.drink.name %></td>
+		<td class="item_price"><%= number_to_currency(include_drink.drink.price * include_drink.quantity) %></td>
+
+	<% end %>
+
+	<% for preference in order.preferences do %>
+	<br/>
+		<b>Pizza:</b>
 	<td><%= preference.quantity  %> &times;</td>
 
 		<% for combo in preference.combos %>
@@ -20,8 +53,12 @@
 			<!--<td><%#= button_to 'Delete this line', preference, method: :delete, confirm: 'Are you sure?' %></td>-->
 		</tr>
 		<% end %>
-
+		<br/>
 		<%= link_to "Reorder?", reorder_url(:id => order.id) %>
 		<br/><br/>
 	<% end %>
+
+
+
 <% end %>
+
