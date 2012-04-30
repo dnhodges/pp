@@ -25,5 +25,20 @@
   <%= @purchase.is_delivered %>
 </p>
 
+<p>
+  <b>Payment Amount:</b>
+  <%= @purchase.payment %>
+</p>
+
+<p>
+  <b>Distance:</b>
+  <%= @purchase.distance %>
+</p>
+
+<p>
+  <b>Delivery Time:</b>
+  <%= @purchase.delivery_time %>
+</p>
+
 <%= link_to 'Edit', edit_purchase_path(@purchase) %> |
 <%= link_to 'Back', purchases_path %>

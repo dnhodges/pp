@@ -32,17 +32,29 @@
     <label> <%= f.label :cc_number, "CC Number (VISA only)" %> </label><br/>
     <%= f.text_field :cc_number %>
   </div>
-    <div class="field">
+  
+  <div class="field">
     <label> <%= f.label :is_delivered, "Delivered?" %> </label><br/>
-    <%= f.text_field :is_delivered %>
+    <%= f.check_box :is_delivered %>
   </div>
 
+  <div class="field">
+    <label> <%= f.label :payment, "Payment Amount:" %> </label><br/>
+    <%= f.number_field :payment %>
+  </div>
 
+  <div class="field">
+    <label> <%= f.label :distance, "Distance:" %> </label><br/>
+    <%= f.number_field :distance %>
+  </div>
 
-
+  <div class="field">
+    <label> <%= f.label :delivery_time, "Delivery Time:" %> </label><br/>
+    <%= f.datetime_select :delivery_time %>
+  </div>
 
   <div class="actions">
-    <%= f.submit 'Place Order' %>
+    <%= f.submit 'Edit Order' %>
   </div>
 <% end %>
 
