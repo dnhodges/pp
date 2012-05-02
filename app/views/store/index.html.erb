@@ -3,6 +3,10 @@
 <% end %>
 <h1>Your Order Options </h1>
 
+	<% if $happy_hour %>
+		<h3>IT'S HAPPY HOUR - If you order 2 of the same pizza, you get one for free!</h3>
+	<% end %>
+
 	<h3><%= link_to "Click to Place Pizza Order", :controller => 'preferences', :action =>'new' %></h3>
    <% @pizzas.each do |pizza| %>
 		<div class="entry">

@@ -39,6 +39,7 @@ Pp::Application.routes.draw do
 
   match 'purchases/:id/reorder' => 'purchases#reorder', :as => :reorder
 
+  get 'store/set_happy_hour', as: "set_happy_hour"
   get "store/index", as: 'store'
 
   resources :pizzas do

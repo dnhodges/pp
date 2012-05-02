@@ -46,6 +46,17 @@ class Order < ActiveRecord::Base
 		preference
 	end
 
+	def adjust_for_happy_hour(preference)
+
+		if($happy_hour and preference.quantity >= 2)
+			preference.price = preference.price/2
+			preference.save
+			self.price -= preference.price
+		end
+
+		self.save
+	end
+
 	def add_drink(drink_id)
 
 		#find an include_drinks already present for an order

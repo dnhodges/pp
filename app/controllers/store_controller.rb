@@ -30,4 +30,8 @@ class StoreController < ApplicationController
       end
     end
   end
+
+  def set_happy_hour
+    $happy_hour = !$happy_hour
+  end
 end
