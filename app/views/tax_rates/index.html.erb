@@ -1,0 +1,27 @@
+<h1>Listing tax_rates</h1>
+
+<table>
+  <tr>
+    <th>State</th>
+    <th>Tax name</th>
+    <th>Rate</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tax_rates.each do |tax_rate| %>
+  <tr>
+    <td><%= tax_rate.state %></td>
+    <td><%= tax_rate.tax_name %></td>
+    <td><%= tax_rate.rate %></td>
+    <td><%= link_to 'Show', tax_rate %></td>
+    <td><%= link_to 'Edit', edit_tax_rate_path(tax_rate) %></td>
+    <td><%= link_to 'Destroy', tax_rate, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tax rate', new_tax_rate_path %>

@@ -6,8 +6,25 @@
 	<%= render(order.include_drinks) %>
 
 	<tr class="total_line">
-		<td colspan="3"><br/>Total: </td>
+		<td colspan="3"><br/>Subtotal: </td>
+
 		<td class="total_cell"><br/><%= number_to_currency(order.total_price) %></td>
+	</tr>
+
+	<tr class="total_line">
+		<td colspan="3"><br/>Tax: </td>
+		<td class="total_cell"><br/><%= number_to_currency(order.tax_total) %></td>
+	</tr>
+
+	<tr class="total_line">
+		<td colspan="3"><br/>Total: </td>
+
+		<% if order.tax_total %>
+			<td class="total_cell"><br/><%= number_to_currency(order.total_price + order.tax_total) %></td>
+		<% else %>
+			<td class="total_cell"><br/><%= number_to_currency(order.total_price) %></td>
+		<% end %>
+
 	</tr>
 
 </table>

@@ -1,4 +1,6 @@
 Pp::Application.routes.draw do
+  resources :tax_rates
+
   resources :driver_schedules
 
   resources :drivers

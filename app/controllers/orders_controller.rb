@@ -66,6 +66,8 @@ class OrdersController < ApplicationController
     @order = Order.new(params[:order])
 
     @order.price = 0
+    @order.tax_total = 0
+    
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }

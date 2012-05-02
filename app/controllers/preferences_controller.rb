@@ -67,6 +67,7 @@ class PreferencesController < ApplicationController
     #end
     @order.adjust_for_happy_hour(@preference)
 
+    @order.add_food_tax(@preference)
     #drink = Drink.find(params[:drink_id])
     respond_to do |format|
       if @preference.save

@@ -46,6 +46,8 @@ class IncludeDrinksController < ApplicationController
     drink = Drink.find(params[:drink_id])
     @include_drink = @order.add_drink(drink.id)
 
+    @order.add_drink_tax(@include_drink)
+
     if @order.price
       @order.price += drink.price
     else

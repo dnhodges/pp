@@ -36,6 +36,7 @@ class Order < ActiveRecord::Base
 
 
 		if self.price 
+			#preference.price = preference.price * get_food_tax(preference.price)
 			self.price += preference.price #update preference price
 		else
 			self.price = preference.price
@@ -46,6 +47,8 @@ class Order < ActiveRecord::Base
 		preference
 	end
 
+	#get food tax - look at preference and get the food tax based on that
+	#get drink tax - look at include
 	def adjust_for_happy_hour(preference)
 
 		if($happy_hour and preference.quantity >= 2)
@@ -70,6 +73,35 @@ class Order < ActiveRecord::Base
 		end
 
 		current_include_drinks
+	end
+
+	def add_drink_tax(include_drink)
+		drink_tax_rate = TaxRate.find_by_state_and_tax_name(self.user.state, 'D')
+
+		drink_tax = drink_tax_rate.rate * include_drink.quantity * include_drink.drink.price
+
+		if self.tax_total 
+			self.tax_total += drink_tax#drink_tax_rate * drink_price
+		else
+			self.tax_total = drink_tax
+		end
+
+		self.save
+	end
+
+	def add_food_tax(preference)
+		#look up tax rate for the state
+		food_tax_rate = TaxRate.find_by_state_and_tax_name(self.user.state, 'F')
+
+		food_tax = food_tax_rate.rate * preference.price
+
+		if self.tax_total
+			self.tax_total += food_tax
+		else
+			self.tax_total = food_tax
+		end
+
+		self.save 
 	end
 
 	def total_price
