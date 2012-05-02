@@ -119,4 +119,8 @@ class UsersController < ApplicationController
   def inactive
     @inactive_users = User.find_all_by_is_active(false)
   end
+
+  def preferred_customers
+    @top_users = User.order(:amount_spent)
+  end
 end

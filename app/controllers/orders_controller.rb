@@ -11,7 +11,9 @@ class OrdersController < ApplicationController
     end
   end
 
-  def query
+  def ordersxml
+    @orders = Order.all
+
     if params[:year]!=nil
       @year = params[:year]
       @month = params[:month]
@@ -22,7 +24,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       
-      if @order = Order.find(:all , :conditions => ["order_time >= ? and order_time < ?", beginning.to_s, ending.to_s]).group_by{|order| order.order_time.at_beginning_of_day}
+      if @order = Order.find(:all , :conditions => ["created_at >= ? and created_at < ?", beginning.to_s, ending.to_s]).group_by{|order| order.created_at.at_beginning_of_day}
         format.xml # index.xml.builder
       end
     end
@@ -67,7 +69,7 @@ class OrdersController < ApplicationController
 
     @order.price = 0
     @order.tax_total = 0
-    
+
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }

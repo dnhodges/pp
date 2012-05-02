@@ -45,8 +45,6 @@ class DriverSchedulesController < ApplicationController
   def create
     @driver_schedule = DriverSchedule.new(params[:driver_schedule])
 
-   #@driver_schedule.driver_id = params[:id]
-
     respond_to do |format|
       if @driver_schedule.save
         format.html { redirect_to @driver_schedule, notice: 'Driver schedule was successfully created.' }

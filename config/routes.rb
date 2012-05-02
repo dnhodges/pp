@@ -43,6 +43,10 @@ Pp::Application.routes.draw do
 
   match 'inactive' => 'users#inactive', :as => :inactive
 
+  match 'ordersxml' => 'orders#ordersxml', :as => :ordersxml
+
+  match 'preferred_customers' => 'users#preferred_customers', :as => :preferred_customers
+  
   get 'store/set_happy_hour', as: "set_happy_hour"
   get "store/index", as: 'store'
 
