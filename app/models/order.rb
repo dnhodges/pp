@@ -57,6 +57,8 @@ class Order < ActiveRecord::Base
 			self.price -= preference.price
 		end
 
+		self.hh_flag = $happy_hour
+
 		self.save
 	end
 

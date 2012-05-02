@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120502154902) do
+ActiveRecord::Schema.define(:version => 20120502220118) do
 
   create_table "combos", :force => true do |t|
     t.integer  "preference_id"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20120502154902) do
     t.decimal  "price"
     t.integer  "user_id"
     t.decimal  "tax_total",  :precision => 8, :scale => 2
+    t.boolean  "hh_flag"
   end
 
   create_table "pizzas", :force => true do |t|
