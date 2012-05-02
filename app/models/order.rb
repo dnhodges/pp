@@ -78,8 +78,12 @@ class Order < ActiveRecord::Base
 	def add_drink_tax(include_drink)
 		drink_tax_rate = TaxRate.find_by_state_and_tax_name(self.user.state, 'D')
 
-		drink_tax = drink_tax_rate.rate * include_drink.quantity * include_drink.drink.price
-
+		if !drink_tax_rate
+			drink_tax = 0
+		else
+			drink_tax = drink_tax_rate.rate * include_drink.quantity * include_drink.drink.price
+		end
+		
 		if self.tax_total 
 			self.tax_total += drink_tax#drink_tax_rate * drink_price
 		else
@@ -93,13 +97,18 @@ class Order < ActiveRecord::Base
 		#look up tax rate for the state
 		food_tax_rate = TaxRate.find_by_state_and_tax_name(self.user.state, 'F')
 
-		food_tax = food_tax_rate.rate * preference.price
+		if !food_tax_rate #if there's no food tax for the state
+			food_tax = 0
+		else
+			food_tax = food_tax_rate.rate * preference.price
+		end
 
 		if self.tax_total
 			self.tax_total += food_tax
 		else
 			self.tax_total = food_tax
 		end
+
 
 		self.save 
 	end

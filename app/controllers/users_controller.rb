@@ -115,4 +115,8 @@ class UsersController < ApplicationController
 
     @orders = Order.find_all_by_user_id(params[:id])
   end
+
+  def inactive
+    @inactive_users = User.find_all_by_is_active(false)
+  end
 end

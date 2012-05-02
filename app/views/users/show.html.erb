@@ -1,4 +1,7 @@
-<p id="notice"><%= notice %></p>
+
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
 
 <p>
   <b>Username:</b>
@@ -37,12 +40,6 @@
 <p>
   <b>Is Active:</b>
    <%= @user.is_active %>
-  <%# if @user.is_active == "y" %>
-    <%#= "yes" %>
-  <%# elsif @user.is_active == "n" %>
-    <%#= "no" %>
-  <% #end %>
-
 </p>
 
 <p>

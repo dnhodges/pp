@@ -41,6 +41,8 @@ Pp::Application.routes.draw do
 
   match 'purchases/:id/reorder' => 'purchases#reorder', :as => :reorder
 
+  match 'inactive' => 'users#inactive', :as => :inactive
+
   get 'store/set_happy_hour', as: "set_happy_hour"
   get "store/index", as: 'store'
 

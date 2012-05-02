@@ -1,0 +1,9 @@
+<h1> Inactive Users </h1>
+
+<% for user in @inactive_users.collect do %>
+	<%= user.username %>
+	<%= link_to 'Show', user %> |
+	<%= link_to 'Edit', edit_user_path(user) %>
+	<br/>
+
+<% end %>
