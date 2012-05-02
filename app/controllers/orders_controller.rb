@@ -11,6 +11,23 @@ class OrdersController < ApplicationController
     end
   end
 
+  def query
+    if params[:year]!=nil
+      @year = params[:year]
+      @month = params[:month]
+      beginning = Date.new(y = @year.to_i, m = @month.to_i, d = 1)
+      ending = beginning>>1
+    end
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      
+      if @order = Order.find(:all , :conditions => ["order_time >= ? and order_time < ?", beginning.to_s, ending.to_s]).group_by{|order| order.order_time.at_beginning_of_day}
+        format.xml # index.xml.builder
+      end
+    end
+  end
+
   # GET /orders/1
   # GET /orders/1.json
   def show
@@ -91,24 +108,5 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-
-  def reorder
-    order = Order.find(params[:id])
-
-    prev_purchase = Purchase.find_by_order_id(order.id)
-
-    @purchase = @order.purchases.build(params[prev_purchase])
-    #session[:order_id] = @order.id
-
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to store_url, notice: "Cart has been updated."}
-      else
-        format.html { render action: "new"}
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end 
 
 end

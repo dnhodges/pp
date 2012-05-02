@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120430211558) do
+ActiveRecord::Schema.define(:version => 20120502144917) do
 
   create_table "combos", :force => true do |t|
     t.integer  "preference_id"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(:version => 20120430211558) do
     t.integer  "ingredient_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.integer  "quantity"
   end
 
   create_table "drinks", :force => true do |t|
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(:version => 20120430211558) do
   end
 
   create_table "drivers", :force => true do |t|
-    t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "phone"
@@ -112,16 +110,17 @@ ActiveRecord::Schema.define(:version => 20120430211558) do
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "password_digest"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
     t.string   "last_name"
     t.string   "username"
     t.string   "email"
     t.text     "address"
     t.string   "state"
     t.integer  "zip"
-    t.integer  "amount_spent"
+    t.decimal  "amount_spent",    :precision => 8, :scale => 2
     t.string   "is_active"
+    t.integer  "phone"
   end
 
 end

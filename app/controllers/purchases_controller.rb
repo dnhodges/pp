@@ -56,6 +56,11 @@ class PurchasesController < ApplicationController
     @purchase.distance = (1..20).to_a.sort_by{rand}.pop#random distance for number of miles
     #@purchase = Purchase.new(params[:purchase])
     #@purchase.add_preferences_from_order(current_order)
+
+    @purchase.order.user.amount_spent += @purchase.order.total_price
+
+    @purchase.order.user.save
+    
     session[:order_id] = nil #order id is now nil
     respond_to do |format|
       if @purchase.save
