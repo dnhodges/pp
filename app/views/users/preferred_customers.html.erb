@@ -1,1 +1,27 @@
 <h1> Preferred Customers </h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <!--<th>Password digest</th>-->
+    <th>Amount Spent</th>
+    <th>30 Days</th>
+    <th>Drink Total</th>
+    <th>Pizza Total</th>
+    <th>Avg Amt Per Delivery</th>
+  </tr> 
+
+<% @top_users.each do |user| %>
+  <tr>
+    <td><%= user.username %></td>
+    <td><%= number_to_currency(user.amount_spent) %></td>
+    <td><%= user.get_30_day_total %></td>
+    <td><%= user.get_drink_total %></td>
+    <td><%= user.get_pizza_total %></td>
+    <td><%= user.get_avg_delivery_amt %></td>
+
+  </tr>
+
+<% end %>
+
+</table>

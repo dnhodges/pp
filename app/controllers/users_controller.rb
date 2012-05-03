@@ -121,6 +121,6 @@ class UsersController < ApplicationController
   end
 
   def preferred_customers
-    @top_users = User.order(:amount_spent)
+    @top_users = User.find(:all, :order => "amount_spent DESC")
   end
 end
