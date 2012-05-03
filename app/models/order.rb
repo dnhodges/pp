@@ -148,4 +148,26 @@ class Order < ActiveRecord::Base
 
 		return total_price
 	end
+
+	#happy hour methods
+
+	def self.get_happy_hour_stats(time, hh)
+		#start_date = time
+		start_date = time - (60 * 60 * 24 * 7)
+		end_date = time
+
+		total = 0
+
+		all_orders = Order.find(:all , :conditions => ["created_at >= ? and created_at < ?", start_date.to_s, end_date.to_s])#.group_by{|preference| preference.created_at.at_beginning_of_day}
+		
+		all_orders.each { |order|
+			if order.hh_flag == hh
+				if order.price
+					total += order.price
+				end
+			end
+		}
+
+		return total
+	end
 end

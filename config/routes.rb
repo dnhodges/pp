@@ -47,7 +47,8 @@ Pp::Application.routes.draw do
 
   match 'preferred_customers' => 'users#preferred_customers', :as => :preferred_customers
   match 'time_window_revenue' => 'orders#time_window_revenue', :as => :time_window_revenue
-
+  match 'happy_hour_analysis' => 'orders#happy_hour_analysis', :as => :happy_hour_analysis
+  
   get 'store/set_happy_hour', as: "set_happy_hour"
   get "store/index", as: 'store'
 

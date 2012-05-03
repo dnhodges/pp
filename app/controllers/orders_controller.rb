@@ -115,7 +115,6 @@ class OrdersController < ApplicationController
   end
 
   def time_window_revenue
-    #@all_drinks = IncludeDrink.all
   end
 
   def revenue_report
@@ -136,4 +135,10 @@ class OrdersController < ApplicationController
     @drink_total = Order.get_drink_total(@include_drinks)
 
   end
+
+  def happy_hour_analysis
+    @orders = Order.all
+
+  end
+
 end
