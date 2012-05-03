@@ -141,9 +141,12 @@ class Order < ActiveRecord::Base
 	def self.get_drink_total(include_drinks)
 		total_price = 0
 		include_drinks.each { |i_d|
-			drink_price = i_d.drink.price
-			q = i_d.quantity
-			total_price += drink_price * q
+
+			if(i_d.drink)
+				drink_price = i_d.drink.price
+				q = i_d.quantity
+				total_price += drink_price * q
+			end
 		}
 
 		return total_price

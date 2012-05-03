@@ -5,14 +5,13 @@
   <tr>
   	<th>Prev Week</th>
     <th>Prev Week Amt (no HH)</th>
-    <!--<th>Password digest</th>-->
     <th>This Week</th>
     <th>This Week (HH)</th>
   </tr>
 	<tr>
-		<td><%= Time.now - (60 * 60 * 24 * 7) %>
+		<td><%= (Time.now - (60 * 60 * 24 * 7)).to_s :short %>
 		<td><%= number_to_currency(Order.get_happy_hour_stats(Time.now - (60 * 60 * 24 * 7), false)) %></td>
-		<td><%= Time.now %>
+		<td><%= Time.now.to_s :short %>
 		<td><%= number_to_currency(Order.get_happy_hour_stats(Time.now, true)) %></td>
 	</tr>
 

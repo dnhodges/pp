@@ -1,11 +1,11 @@
 <h1>Time-Window Revenue Report</h1>
 
 <b><p> Report from: </p></b>
-<%= @start_date %>
+<%= @start_date.to_s :short %>
 
 <b><p> To: </p></b>
 
-<%= @end_date %>
+<%= @end_date.to_s :short %>
 
 <b><p> Preferences ordered during this window: </p></b>
 
@@ -27,3 +27,33 @@
 <b><p> Drink Total: </p></b>
 
 <%= number_to_currency(@drink_total) %>
+
+
+<!--Stats for previous time period-->
+<b><p> Report from: </p></b>
+<%= @prev_start_date.to_s :short %>
+
+<b><p> To: </p></b>
+
+<%= @prev_end_date.to_s :short %>
+
+<b><p> Preferences ordered during this window: </p></b>
+
+<%= for preference in @prev_preferences do %>
+	<%= preference %>
+<% end %>
+
+<b><p> Preference total: </p></b>
+
+<%= number_to_currency(@prev_pref_total) %>
+
+<b><p> Drinks ordered during this window: </p></b>
+
+
+<%= for drink in @prev_include_drinks do %>
+	<%= drink %>
+<% end %>
+
+<b><p> Drink Total: </p></b>
+
+<%= number_to_currency(@prev_drink_total) %>

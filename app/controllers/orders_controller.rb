@@ -120,11 +120,11 @@ class OrdersController < ApplicationController
   def revenue_report
     start = params[:start] #params['window']['start(1i)']
 
-    @start_date = DateTime.new(y=start[:year].to_i,m=start[:month].to_i,d=start[:day].to_i,h=start[:hour].to_i,min=start[:minute].to_i)
+    @start_date = Time.new(y=start[:year].to_i,m=start[:month].to_i,d=start[:day].to_i,h=start[:hour].to_i,min=start[:minute].to_i)
 
     end_p = params[:end]
 
-    @end_date = DateTime.new(y=end_p[:year].to_i,m=end_p[:month].to_i,d=end_p[:day].to_i,h=start[:hour].to_i,min=end_p[:minute].to_i)
+    @end_date = Time.new(y=end_p[:year].to_i,m=end_p[:month].to_i,d=end_p[:day].to_i,h=start[:hour].to_i,min=end_p[:minute].to_i)
 
     @preferences = Preference.find(:all , :conditions => ["created_at >= ? and created_at < ?", @start_date.to_s, @end_date.to_s])#.group_by{|preference| preference.created_at.at_beginning_of_day}
 
@@ -133,6 +133,19 @@ class OrdersController < ApplicationController
     @include_drinks = IncludeDrink.find(:all , :conditions => ["created_at >= ? and created_at < ?", @start_date.to_s, @end_date.to_s])#.group_by{|drink| drink.created_at.at_beginning_of_day}
     
     @drink_total = Order.get_drink_total(@include_drinks)
+
+    #get the totals for previous time period
+    @prev_start_date = @start_date - (@end_date - @start_date)
+
+    @prev_end_date = @end_date - (@end_date - @start_date)
+
+    @prev_preferences = Preference.find(:all , :conditions => ["created_at >= ? and created_at < ?", @prev_start_date.to_s, @prev_end_date.to_s])#.group_by{|preference| preference.created_at.at_beginning_of_day}
+
+    @prev_pref_total = Order.get_preference_total(@prev_preferences)
+
+    @prev_include_drinks = IncludeDrink.find(:all , :conditions => ["created_at >= ? and created_at < ?", @prev_start_date.to_s, @prev_end_date.to_s])#.group_by{|drink| drink.created_at.at_beginning_of_day}
+    
+    @prev_drink_total = Order.get_drink_total(@prev_include_drinks)
 
   end
 
