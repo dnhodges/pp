@@ -7,19 +7,19 @@
 
 		<b>Payment type:</b> <td><%=  purchase.pay_type %> </td>		</br>
 
-		<% if purchase.cc_number %>
-		<b>CC Number:</b> <td><%= purchase.cc_number %> </td>		</br>
+		<% if purchase.cc_number != '' %>
+			<b>CC Number:</b> <td><%= purchase.cc_number %> </td>		</br>
 
 		<% end %>
 
 		<% if purchase.driver_id %>
-		<b>Driver ID:</b> <td><%= purchase.driver_id %> </td>		</br>
+			<b>Driver ID:</b> <td><%= purchase.driver_id %> </td>		</br>
 		<% end %>
 
 		<% if purchase.delivery_time %>
-		<b>Delivery Time:</b> <td><%= purchase.delivery_time.strftime("%H:%M") %> </td>		</br>
+			<b>Delivery Time:</b> <td><%= purchase.delivery_time.strftime("%H:%M") %> </td>		</br>
 		<% else %>
-		<b>Expected delivery time:</b> <td><%= (Time.now + 60 * 30).strftime("%H:%M")  %> </td>	</br>
+			<b>Expected delivery time:</b> <td><%= (Time.now + 60 * 30).strftime("%H:%M")  %> </td>	</br>
 		<% end %>
 
 		<br/>
@@ -40,17 +40,21 @@
 
 		<% for combo in preference.combos %>
 		<tr>
-			<td><%= combo.pizza.size %></td>
-			<td><%= combo.pizza.crust %></td>
-
+			<% if combo == preference.combos.first %>
+				<td><%= combo.pizza.size %></td>
+				<td><%= combo.pizza.crust %></td>
+			<% end %>
 			<% if combo.ingredient %>
 				<td><%= combo.ingredient.name %></td>
 			<% else %>
 				<td></td>
 			<% end %>
 			<%#= pref.pizza.price %>
+
+			<% if combo == preference.combos.last %>
 			<td class="item_price"><%= number_to_currency(preference.price) %></td>
 			<!--<td><%#= button_to 'Delete this line', preference, method: :delete, confirm: 'Are you sure?' %></td>-->
+			<% end %>
 		</tr>
 		<% end %>
 		<br/>

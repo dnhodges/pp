@@ -17,8 +17,10 @@
 			<div id="order">
 				<% if current_user %>
 				<%# if session[:user_id] %>
-					<% if @order %>
-						<%= render @order %>
+					<% if User.find(session[:user_id]).username != 'admin' %>
+						<% if @order %>
+							<%= render @order %>
+						<% end %>
 					<% end %>
 				<% end %>
 			</div>
@@ -36,7 +38,10 @@
 			<% if current_user %>
 			<%# if session[:user_id] %>
 				<ul>
-					<li><%= link_to "Invoice History", history_url(:id => current_user.id) %></li>
+					<% if User.find(session[:user_id]).username != 'admin' %>
+						<li><%= link_to "Invoice History", history_url(:id => current_user.id) %></li>
+					<% end %>
+					
 					<li><%= link_to 'Logout', logout_path, method: :delete %></li>
 					<li><%= link_to 'Edit Profile', edit_user_path(session[:user_id]) %></li>
 
@@ -53,6 +58,7 @@
 						<li><%= link_to 'Pizzas', pizzas_path %></li>
 						<li><%= link_to 'Tax Rates', tax_rates_path %></li>
 						<li><%= link_to 'Users', users_path %></li>
+						<li><%= link_to 'All Orders', orders_path %></li>
 						<li><%= link_to 'Drivers', drivers_path %></li>
 
 						<!--Queries-->
