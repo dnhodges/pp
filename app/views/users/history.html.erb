@@ -19,7 +19,7 @@
 		<% if purchase.delivery_time %>
 		<b>Delivery Time:</b> <td><%= purchase.delivery_time.strftime("%H:%M") %> </td>		</br>
 		<% else %>
-		<b>Expected delivery time:</b> <td><%= Time.now.strftime("%H:%M")  %> </td>	</br>
+		<b>Expected delivery time:</b> <td><%= (Time.now + 60 * 30).strftime("%H:%M")  %> </td>	</br>
 		<% end %>
 
 		<br/>
@@ -54,7 +54,9 @@
 		</tr>
 		<% end %>
 		<br/>
-		<%= link_to "Reorder?", reorder_url(:id => order.id) %>
+		<% if preference == order.preferences.last %>
+			<%= link_to "Reorder?", reorder_url(:id => order.id) %>
+		<% end %>
 		<br/><br/>
 	<% end %>
 

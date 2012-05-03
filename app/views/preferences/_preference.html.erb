@@ -4,17 +4,30 @@
 <td><%= preference.quantity  %> &times;</td>
 
 <% for combo in preference.combos %>
-<tr>
-	<td><%= combo.pizza.size %></td>
-	<td><%= combo.pizza.crust %></td>
 
-	<% if combo.ingredient %>
-		<td><%= combo.ingredient.name %></td>
-	<% else %>
-		<td></td>
-	<% end %>
-	<%#= pref.pizza.price %>
-	<td class="item_price"><%= number_to_currency(preference.price) %></td>
-	<!--<td><%#= button_to 'Delete this line', preference, method: :delete, confirm: 'Are you sure?' %></td>-->
-</tr>
+
+	<tr>
+		<% if combo == preference.combos.first %>
+
+			<td><%= combo.pizza.size %></td>
+			<td><%= combo.pizza.crust %></td>
+
+		<% end %>
+
+		<% if combo.ingredient %>
+
+			<% if combo != preference.combos.first %>
+				<td></td>
+				<td></td>
+			<% end %>
+				<td><%= combo.ingredient.name %></td>
+		<% else %>
+			<td></td>
+		<% end %>
+
+		<% if combo == preference.combos.last %>
+			<td class="item_price"><%= number_to_currency(preference.price) %></td>
+		<% end %>
+	</tr>
+
 <% end %>

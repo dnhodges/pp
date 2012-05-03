@@ -5,9 +5,9 @@ class Preference < ActiveRecord::Base
  
  	has_many :combos, :dependent => :destroy
 
- 	validates_presence_of :order_id, :quantity
+ 	#validates_presence_of :order_id#, :quantity
 
- 	validates :quantity, :numericality => {:greater_than_or_equal_to => 0 }
+ 	#validates :quantity, :numericality => {:greater_than_or_equal_to => 0 }
 =begin
 	def total_price
 		pizza.price * quantity
