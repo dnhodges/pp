@@ -3,6 +3,15 @@ class User < ActiveRecord::Base
 	#after_destroy :ensure_an_admin_remains
 	#attr_accessible :is_active, :first_name, :last_name, :username, :email, :password, :address, :state, :zip
 	validates :username, presence: true, uniqueness: true
+	validates_presence_of :first_name, :last_name, :email, :password, :address, :state, :zip, :phone
+
+	validates :username, :password, :length => { :in => 3..20 }
+  	validates :first_name, :last_name, :email, :length => { :maximum => 20 }
+  	validates :address, :length => {:maximum => 75}
+  	validates :state, :length => {:is => 2}
+  	validates :zip, :length => {:is => 5}
+ 	validates :password, :length => { :in => 4..20 }
+
 	has_secure_password
 
 

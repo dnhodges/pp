@@ -9,6 +9,8 @@ class Order < ActiveRecord::Base
 
 	belongs_to :user
 
+	validates_presence_of :user_id, :hh_flag
+
 	def add_preference_and_combo(pizza, ingredients, quantity)
 		#want to see if there's already an pizza/order combination associated with the order
 
