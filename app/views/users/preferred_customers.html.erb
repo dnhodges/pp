@@ -15,10 +15,10 @@
   <tr>
     <td><%= user.username %></td>
     <td><%= number_to_currency(user.amount_spent) %></td>
-    <td><%= user.get_30_day_total %></td>
-    <td><%= user.get_drink_total %></td>
-    <td><%= user.get_pizza_total %></td>
-    <td><%= user.get_avg_delivery_amt %></td>
+    <td><%= number_to_currency(user.get_30_day_total) %></td>
+    <td><%= number_to_currency(user.get_drink_total) %></td>
+    <td><%= number_to_currency(user.get_pizza_total) %></td>
+    <td><%= number_to_currency(user.get_avg_delivery_amt) %></td>
 
   </tr>
 
