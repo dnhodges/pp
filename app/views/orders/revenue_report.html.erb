@@ -1,0 +1,29 @@
+<h1>Time-Window Revenue Report</h1>
+
+<b><p> Report from: </p></b>
+<%= @start_date %>
+
+<b><p> To: </p></b>
+
+<%= @end_date %>
+
+<b><p> Preferences ordered during this window: </p></b>
+
+<%= for preference in @preferences do %>
+	<%= preference %>
+<% end %>
+
+<b><p> Preference total: </p></b>
+
+<%= number_to_currency(@pref_total) %>
+
+<b><p> Drinks ordered during this window: </p></b>
+
+
+<%= for drink in @include_drinks do %>
+	<%= drink %>
+<% end %>
+
+<b><p> Drink Total: </p></b>
+
+<%= number_to_currency(@drink_total) %>

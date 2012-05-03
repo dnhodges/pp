@@ -128,4 +128,24 @@ class Order < ActiveRecord::Base
 
 		return drink_price + pizza_price
 	end
+
+	#time-window revenue methods
+
+	def self.get_preference_total(preferences)
+		total = 0
+
+		preferences.each { |pref| total += pref.price }
+		return total
+	end
+
+	def self.get_drink_total(include_drinks)
+		total_price = 0
+		include_drinks.each { |i_d|
+			drink_price = i_d.drink.price
+			q = i_d.quantity
+			total_price += drink_price * q
+		}
+
+		return total_price
+	end
 end

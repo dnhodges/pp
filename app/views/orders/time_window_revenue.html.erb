@@ -1,0 +1,22 @@
+<h1>Time-Window Revenue<h1>
+
+
+<%= form_tag :controller => 'orders', :action => 'revenue_report' do %>
+
+  <div class="field">
+  	<p>Enter start time:</p>
+   	<%= select_datetime Time.now, :prefix => 'start' %>
+  </div>
+
+
+  <div class="field">
+  	<p>Enter end time:</p>
+   	<%= select_datetime Time.new, :prefix => 'end' %>
+  </div>
+
+  <%= submit_tag("revenue report") %>
+
+
+<% end %>
+
+  <%#= link_to order.revenue, :action => 'revenue', :start_window => "begin", :end_window => "end" %>

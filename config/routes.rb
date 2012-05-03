@@ -46,10 +46,12 @@ Pp::Application.routes.draw do
   match 'ordersxml' => 'orders#ordersxml', :as => :ordersxml
 
   match 'preferred_customers' => 'users#preferred_customers', :as => :preferred_customers
-  
+  match 'time_window_revenue' => 'orders#time_window_revenue', :as => :time_window_revenue
+
   get 'store/set_happy_hour', as: "set_happy_hour"
   get "store/index", as: 'store'
 
+  match '/orders/revenue_report', :controller => 'orders', :action => 'revenue_report' #resources :orders
   resources :pizzas do
     get :who_bought, on: :member
   end
